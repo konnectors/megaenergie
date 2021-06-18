@@ -53,8 +53,6 @@ async function start(fields, cozyParameters) {
     arr.forEach(doc => documents.push(doc))
   })
 
-  // Here we use the saveBills function even if what we fetch are not bills,
-  // but this is the most common case in connectors
   log('info', 'Saving data to Cozy')
   await this.saveBills(documents, fields, {
     // This is a bank identifier which will be used to link bills to bank operations. These
@@ -64,8 +62,6 @@ async function start(fields, cozyParameters) {
   })
 }
 
-// This shows authentication using the [signin function](https://github.com/konnectors/libs/blob/master/packages/cozy-konnector-libs/docs/api.md#module_signin)
-// even if this in another domain here, but it works as an example
 async function authenticate(username, password) {
   try {
     const response = await request.post(`${baseUrl}/public/customer/v1/login`, {
@@ -78,7 +74,6 @@ async function authenticate(username, password) {
 
     log('debug', response, 'Authentification response')
 
-    // request.headers = { authorization: `Bearer ${response.token}` }
     request.options = {
       headers: {
         authorization: `Bearer ${response.token}`
@@ -103,7 +98,7 @@ async function getContractInfo(login, contract) {
   const result = invoices.map(doc => {
     const date = moment(doc.date)
     return {
-      amount: doc.vatIncludedAmount,
+      amount: parseFloat(doc.vatIncludedAmount),
       contractId: contract.id,
       contractLabel: `${contract.energy}_${contract.id}`,
       currency: 'EUR',
