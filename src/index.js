@@ -54,12 +54,7 @@ async function start(fields, cozyParameters) {
   })
 
   log('info', 'Saving data to Cozy')
-  await this.saveBills(documents, fields, {
-    // This is a bank identifier which will be used to link bills to bank operations. These
-    // identifiers should be at least a word found in the title of a bank operation related to this
-    // bill. It is not case sensitive.
-    identifiers: ['Mega Energie']
-  })
+  await this.saveFiles(documents, fields)
 }
 
 async function authenticate(username, password) {

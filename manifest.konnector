@@ -23,12 +23,6 @@
   ],
   "screenshots": [],
   "permissions": {
-    "bank operations": {
-      "type": "io.cozy.bank.operations"
-    },
-    "bills": {
-      "type": "io.cozy.bills"
-    },
     "files": {
       "type": "io.cozy.files"
     },
@@ -46,12 +40,6 @@
       "short_description": "Récupère la liste de des factures",
       "long_description": "Récupère la liste des factures sur le site https://www.mega-energie.fr/",
       "permissions": {
-        "bank operations": {
-          "description": "Utilisé pour relier les factures à des operations bancaires"
-        },
-        "bills": {
-          "description": "Utilisé pour sauver les données des factures"
-        },
         "files": {
           "description": "Utilisé pour sauvegarder les factures"
         },
@@ -64,12 +52,6 @@
       "short_description": "Fetch a list of invoices",
       "long_description": "Fetch a list of invoices from the website https://www.mega-energie.fr/",
       "permissions": {
-        "bank operations": {
-          "description": "Required to link bank operations to bills"
-        },
-        "bills": {
-          "description": "Required to save the bills data"
-        },
         "files": {
           "description": "Required to save the bills"
         },
